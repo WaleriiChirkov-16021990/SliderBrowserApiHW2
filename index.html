@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="slider-container">
+    <img id="slider-image" src="image1.png" alt="Image">
+    <button id="prev-button">Предыдущее изображение</button>
+    <button id="next-button">Следующее изображение</button>
+    <div id="dots-container">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+    const images = ['dead.jpeg', 'tish.png', 'مشكلة-الشاشة-الزرقاء-في-ويندوز-10.jpg'];
+    let currentImageIndex = 0;
+
+    const sliderImage = document.getElementById('slider-image');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const dots = Array.from(document.getElementsByClassName('dot'));
+
+    prevButton.addEventListener('click', showPrevImage);
+    nextButton.addEventListener('click', showNextImage);
+    dots.forEach((dot, index) => dot.addEventListener('click', () => showImage(index)));
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function showImage(index) {
+        currentImageIndex = index;
+        sliderImage.src = images[index];
+        updateDots(index);
+    }
+
+    function updateDots(index) {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+
+    showImage(currentImageIndex);
+</script>
+
+</body>
+</html>

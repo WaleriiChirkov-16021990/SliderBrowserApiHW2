@@ -1,0 +1,55 @@
+
+#slider-container {
+    width: 500px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+#slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#prev-button,
+#next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#prev-button {
+    left: 10px;
+}
+
+#next-button {
+    right: 10px;
+}
+
+#dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
